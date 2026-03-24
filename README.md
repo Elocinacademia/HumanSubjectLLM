@@ -24,14 +24,19 @@ HumanSubjectLLM/
 Put CSV files into local dir, e.g. data\
 ```
 
-## Dependencies
-
 ## Pipeline 2 STEPS
 **Step 1**:
 
-Run `python cleaning.py` to merge all CSV files into a single file. This step also removes unwanted ML conferences and keeps only the selected ones.
+Run 
+```
+python cleaning.py
+```
+to merge all CSV files into a single file. This step also removes unwanted ML conferences and keeps only the selected ones.
 
-**Output**: `save/papers_all.csv`
+**Output**: 
+```
+save/papers_all.csv
+```
 
 | File | Rows Kept |
 |---|---|
@@ -47,13 +52,29 @@ Run `python cleaning.py` to merge all CSV files into a single file. This step al
 
 **Step 2**: 
 
-Run `pip2_keyword_filtering.py` to filter papers using keywords.
+Run 
+```
+pip2_keyword_filtering.py
+```
+to filter papers published between 2022 and 2025. A paper is kept only if its title or abstract matches all three keyword groups: (1) LLM-related terms (`genai`, `language model`, `llm`), (2) `study`, and (3) human-related terms (`user`, `participant`, `human`).
 
-**Output:** `save/papers_all_keyword_filtered.csv`
+**Output:** 
+```
+save/papers_all_keyword_filtered.csv
+```
 -> 837 papers in total
 
 **Step 3**: 
 
-Run `pip2_fullpaper_judge.py` to evaluate the full papers.
+Run 
+```
+pip2_fullpaper_judge.py
+```
+to evaluate the full papers. This script uses gpt-4o through the OpenAI API, so please set your API key in the environment before running it.
+
+> [!IMPORTANT]
+> Before running this step, first execute `download_all_pdfs.py` to download the PDFs for the papers. This script will automatically create a `/pdfs` directory.
+>
+> You also need to replace `COOKIES_FILE` with your own cookies file, as access to ACM Digital Library requires valid login credentials.
 
 **Output:** `judged_fullpaper.csv`
