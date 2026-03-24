@@ -78,3 +78,4 @@ to evaluate the full papers. This script uses gpt-4o through the OpenAI API, so 
 > You also need to replace `COOKIES_FILE` with your own cookies file, as access to ACM Digital Library requires valid login credentials.
 
 **Output:** `judged_fullpaper.csv`
+-> 190 papers
