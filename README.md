@@ -4,17 +4,23 @@
 
 ```text
 HumanSubjectLLM/
-├── crawlers/                     # Crawlers or scripts for collecting source data
-├── save/                         # Saved outputs, intermediate files, or processed results
-├── cleaning.py                   # Data cleaning and preprocessing
-├── download_all_pdfs.py          # Bulk PDF download utility
-├── pip1_keyword_filtering.py     # Pipeline 1 Step 1 keyword-based filtering
-├── pip1_abstract_judge.py        # Pipeline 1 Step 2 abstract-level LLM judging
-├── pip1_fullpaper_judge.py       # Pipeline 1 Step 3 full-paper LLM judging
-├── pip2_keyword_filtering.py     # Pipeline 2 Step 1 keyword-based filtering
-├── pip2_fullpaper_judge.py       # Pipeline 2 Step 2 full-paper LLM judging
+├── crawlers/                           # Scripts for crawling paper metadata
+│   ├── crawl_aaai_2022.py
+│   ├── crawl_aaai_23_25.py
+│   └── crawl_ijcai.py
+├── save/                               # Output files and intermediate results
+│   ├── judged_fullpaper.csv
+│   ├── judged_fullpaper_log.jsonl
+│   └── papers_all_keyword_filtered.csv
 ├── LICENSE
-└── README.md
+├── README.md
+├── cleaning.py                         # Merge and clean input CSV files
+├── download_all_pdfs.py                # Download PDFs for selected papers
+├── pip1_abstract_judge.py              # Stage 1 abstract-level judging
+├── pip1_fullpaper_judge.py             # Stage 1 full-paper judging
+├── pip1_keyword_filtering.py           # Stage 1 keyword filtering
+├── pip2_fullpaper_judge.py             # Stage 2 full-paper judging
+└── pip2_keyword_filtering.py           # Stage 2 keyword filtering
 ```
 
 
@@ -23,6 +29,7 @@ HumanSubjectLLM/
 ```text
 Put CSV files into local dir, e.g. data\
 ```
+I can upload the data files to Hugging Face if needed.
 
 ## Pipeline 2 STEPS
 **Step 1**:
